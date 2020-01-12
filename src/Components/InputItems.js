@@ -1,25 +1,24 @@
-import React, { Component } from 'react'
+import React from 'react'
 
- const inputItems=props=>{
+const inputItems = props => {
 
     return (
         <div className="InputItems">
             <form onSubmit={(evt) => props.handleSubmit(evt)}>
-            <input 
-            type="text" 
-            placeholder="What needs to be done?"
-            onChange={(evt) => props.handleChange(evt)}
-            value=  {props.inputValue}
-            />          
+                <input
+                    type="text"
+                    placeholder="What needs to be done?"
+                    onChange={(evt) => props.handleChange(evt)}
+                    value={props.inputValue}
+                />
             </form>
         </div>
     )
 
 
- }
-    
-   
-    
-    
+}
 
-export default inputItems ;
+
+
+
+export default inputItems;
