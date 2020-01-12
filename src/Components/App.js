@@ -25,10 +25,32 @@ handleSubmit = (evt) => {
 }
 //linethrough when checked change the value of done 
 handleChecked = (index)=> {
-  const todos= this.state.todos;
+  const todos= [...this.state.todos];
   todos[index].done= !todos[index].done;
   this.setState({todos});
 }
+deleteItem = (index)=> {
+  console.log(index);
+  
+  const todos= [...this.state.todos];
+
+  const updatedtodos = todos.filter(item =>item.index != index);
+
+  this.setState({todos: updatedtodos});
+}
+/*
+deleteItem(index){
+  const todos= [...this.state.todos];
+
+  const updatedtodos = todos.filter(item =>item.index != index);
+
+  this.setState({todos: updatedtodos});
+}
+deleteAll(){
+  this.setState({todos=[]});
+}
+*/
+
 
  render() {
   return (     
@@ -41,14 +63,34 @@ handleChecked = (index)=> {
           inputValue={this.state.inputValue}
           handleSubmit={this.handleSubmit} 
         />
-        
+        <div>
         <Listitems 
         handleChecked={this.handleChecked}
+        deleteItem={this.handleonClick}
         todos={this.state.todos}
+        
         />
+        
+        </div>
+        
         </div>
         <div>
-          {this.state.todos.length}
+          <button>{this.state.todos.length} items left </button>
+          
+        
+        
+          <button>Active</button>
+          
+        
+        
+          <button>Completed </button>
+
+          
+          
+          <button>Clear ALL </button>
+
+          
+          
         </div>
         
        </div>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
  const inputItems=props=>{
+
     return (
         <div className="InputItems">
             <form onSubmit={(evt) => props.handleSubmit(evt)}>

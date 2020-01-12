@@ -13,6 +13,8 @@ import App from './App'
             style={{textDecoration:props.todo.done ? 'line-through' : 'none' }}>
             {props.todo.value}
             </span>
+            <button deleteItem={()=>
+                props.deleteItem(props.index)}>X</button>
             </div> 
             </div> 
     )

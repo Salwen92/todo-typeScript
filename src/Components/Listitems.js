@@ -6,13 +6,14 @@ const listItems=props=>{
         return (
             <div>
                 
-                <div id="react-container">
+                <div>
                 {props.todos.map((todo, index) => {
                     return (
                         <Todoitem 
                         key={index}
                         index={index}
                         handleChecked = { props.handleChecked}
+                        deleteItem= {(index)=>props.deleteItem(index)}
                         todo={todo}
                         />
                     )
