@@ -33,21 +33,15 @@ class App extends Component {
     console.log(index);
 
     const todos = [...this.state.todos];
-    todos.splice(index,1);
+    todos.splice(index, 1);
     this.setState({ todos: todos });
   }
-  /*
-  deleteItem(index){
-    const todos= [...this.state.todos];
-  
-    const updatedtodos = todos.filter(item =>item.index != index);
-  
-    this.setState({todos: updatedtodos});
+
+  deleteAll = () => {
+    const todos = [...this.state.todos];
+    todos.splice(0, todos.length);
+    this.setState({ todos: todos });
   }
-  deleteAll(){
-    this.setState({todos=[]});
-  }
-  */
 
 
   render() {
@@ -65,6 +59,7 @@ class App extends Component {
             <Listitems
               handleChecked={this.handleChecked}
               deleteItem={this.deleteItem}
+              deleteAll={this.deleteAll}
               todos={this.state.todos}
 
             />
@@ -86,7 +81,7 @@ class App extends Component {
 
 
 
-          <button>Clear ALL </button>
+          <button onClick={() => this.deleteAll()}   >Clear ALL</button>
 
 
 

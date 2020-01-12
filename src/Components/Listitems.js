@@ -14,6 +14,7 @@ const listItems = props => {
                             index={index}
                             handleChecked={props.handleChecked}
                             deleteItem={props.deleteItem}
+                            deleteAll={props.deleteAll}
                             todo={todo}
                         />
                     )
