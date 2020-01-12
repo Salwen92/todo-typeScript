@@ -32,19 +32,24 @@ handleChecked = (index)=> {
 
  render() {
   return (     
-      <div className="App" class="main">
+      <div className="App" class="container">
         
         <h1>Todos</h1> 
-        
+        <div class="todolist">
         <Inputitems 
           handleChange={this.handleChange}
           inputValue={this.state.inputValue}
           handleSubmit={this.handleSubmit} 
         />
+        
         <Listitems 
         handleChecked={this.handleChecked}
         todos={this.state.todos}
         />
+        </div>
+        <div>
+          {this.state.todos.length}
+        </div>
         
        </div>
    );

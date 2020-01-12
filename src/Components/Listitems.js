@@ -1,18 +1,18 @@
 import React, { Component } from 'react'
 import Todoitem from './Todoitem'
-export default class Listitems extends Component {
-  
-    render() {
+
+//Statless component, il se base seulement sur les props 
+const listItems=props=>{
         return (
             <div>
                 
                 <div id="react-container">
-                {this.props.todos.map((todo, index) => {
+                {props.todos.map((todo, index) => {
                     return (
                         <Todoitem 
                         key={index}
                         index={index}
-                        handleChecked = { this.props.handleChecked}
+                        handleChecked = { props.handleChecked}
                         todo={todo}
                         />
                     )
@@ -23,5 +23,10 @@ export default class Listitems extends Component {
             
             
         )
-    }
-}
+    } 
+    export default listItems;
+
+    
+  
+   
+
