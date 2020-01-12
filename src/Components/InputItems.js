@@ -12,12 +12,8 @@ export default class InputItems extends Component {
                 placeholder="What needs to be done?"
                 onChange={(evt) => this.props.handleChange(evt)}
                 value=  {this.props.inputValue}
-                /> 
-                
-                
+                />          
                 </form>
-
-
             </div>
         )
     }
