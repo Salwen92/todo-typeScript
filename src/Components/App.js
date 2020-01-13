@@ -6,6 +6,7 @@ import '../App.css'
 
 class App extends Component {
   state = {
+    view: 'all', // 'all' | 'active' | 'completed'
     inputValue: '',
     todos: []
   }
@@ -42,22 +43,29 @@ class App extends Component {
     todos.splice(0, todos.length);
     this.setState({ todos: todos });
   }
-  
+
+  showAll = () => {
+    this.setState({ view: 'all' });
+  }
   showCompleted = () => {
-    const todos = [...this.state.todos];
-    const todoscompleted=todos.filter(item => item.done ==true);
-    this.setState({ todos: todoscompleted });
-    
+    this.setState({ view: 'completed' });
   }
   showActive = () => {
-    const todos = [...this.state.todos];
-    const todosactive=todos.filter(item => item.done ==false);
-    this.setState({ todos: todosactive });
-    
+    this.setState({ view: 'active' });
   }
 
 
   render() {
+
+    const { view, todos, inputValue } = this.state;
+
+    let todoList = todos;
+    if (view === 'active') {
+      todoList = todos.filter(t => !t.done);
+    } else if (view === 'completed') {
+      todoList = todos.filter(t => t.done);
+    }
+
     return (
       <div className="App" class="container">
 
@@ -65,7 +73,7 @@ class App extends Component {
         <div class="todolist">
           <Inputitems
             handleChange={this.handleChange}
-            inputValue={this.state.inputValue}
+            inputValue={inputValue}
             handleSubmit={this.handleSubmit}
           />
           <div>
@@ -73,7 +81,7 @@ class App extends Component {
               handleChecked={this.handleChecked}
               deleteItem={this.deleteItem}
               deleteAll={this.deleteAll}
-              todos={this.state.todos}
+              todos={todoList}
 
             />
 
@@ -83,6 +91,9 @@ class App extends Component {
         <div>
 
           <button>{this.state.todos.length} items left </button>
+
+
+          <button onClick={()=>this.showAll()}>All</button>
 
 
 
