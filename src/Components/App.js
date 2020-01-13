@@ -42,6 +42,19 @@ class App extends Component {
     todos.splice(0, todos.length);
     this.setState({ todos: todos });
   }
+  
+  showCompleted = () => {
+    const todos = [...this.state.todos];
+    const todoscompleted=todos.filter(item => item.done ==true);
+    this.setState({ todos: todoscompleted });
+    
+  }
+  showActive = () => {
+    const todos = [...this.state.todos];
+    const todosactive=todos.filter(item => item.done ==false);
+    this.setState({ todos: todosactive });
+    
+  }
 
 
   render() {
@@ -73,11 +86,11 @@ class App extends Component {
 
 
 
-          <button>Active</button>
+          <button onClick={()=>this.showActive()}>Active</button>
 
 
 
-          <button>Completed </button>
+          <button onClick={()=>this.showCompleted()}>Completed </button>
 
 
 

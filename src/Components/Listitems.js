@@ -15,6 +15,7 @@ const listItems = props => {
                             handleChecked={props.handleChecked}
                             deleteItem={props.deleteItem}
                             deleteAll={props.deleteAll}
+                            showall={props.showall}
                             todo={todo}
                         />
                     )
@@ -27,8 +28,3 @@ const listItems = props => {
     )
 }
 export default listItems;
-
-
-
-
-
