@@ -3,13 +3,13 @@ import Todoitem from "./Todoitem";
 
 //Statless component, il se base seulement sur les props
 
-const listItems = props => {
+const listItem = props => {
   return (
     <div>
       {props.todos.map((todo, index) => {
         return (
           <Todoitem
-            key={index}
+            key={todo.id}
             index={index}
             handleChecked={props.handleChecked}
             deleteItem={props.deleteItem}
@@ -22,4 +22,4 @@ const listItems = props => {
     </div>
   );
 };
-export default listItems;
+export default listItem;
