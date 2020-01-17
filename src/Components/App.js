@@ -40,15 +40,12 @@ const App = props => {
     settodos(newtodos);
   };
   const deleteItem = id => {
-    console.log(id);
     //const newtodos = todos.filter(t => !t.done);
 
     const newtodos = [...todos];
-    newtodos.splice(
-      newtodos.indexOf(e => e.id === id),
-      1
-    );
+    const index = newtodos.findIndex(e => e.id === id);
 
+    newtodos.splice(index, 1);
     settodos(newtodos);
   };
 
