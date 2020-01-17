@@ -2,14 +2,14 @@ import React from "react";
 import Todoitem from "./Todoitem";
 
 //Statless component, il se base seulement sur les props
-const d = Date.now();
+
 const listItem = props => {
   return (
     <div>
       {props.todos.map((todo, index) => {
         return (
           <Todoitem
-            key={props.key}
+            key={todo.id}
             index={index}
             handleChecked={props.handleChecked}
             deleteItem={props.deleteItem}

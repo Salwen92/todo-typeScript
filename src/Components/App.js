@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Listitems from "./Listitems";
 import Inputitems from "./InputItems";
 import "../App.css";
+import todoitem from "./Todoitem";
 
 const App = props => {
   // const [state, setState] = useState({
@@ -22,9 +23,8 @@ const App = props => {
     const newTodo = {
       value: inputValue,
       done: false,
-      key: Date.now()
+      id: Date.now()
     };
-    console.log(newTodo.key);
 
     const newTodos = todos;
     todos.push(newTodo);

@@ -8,6 +8,7 @@ const todoitem = props => {
           type="checkbox"
           onChange={() => props.handleChecked(props.index)}
           checked={props.todo.done}
+          id={props.todo.id}
         ></input>
         <span
           style={{
@@ -17,7 +18,12 @@ const todoitem = props => {
           {props.todo.value}
         </span>
 
-        <button onClick={() => props.deleteItem(props.index)}>X</button>
+        <button
+          id={props.todo.id}
+          onClick={() => props.deleteItem(props.index)}
+        >
+          X
+        </button>
       </div>
     </div>
   );
