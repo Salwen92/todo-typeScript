@@ -21,8 +21,11 @@ const App = props => {
     evt.preventDefault();
     const newTodo = {
       value: inputValue,
-      done: false
+      done: false,
+      key: Date.now()
     };
+    console.log(newTodo.key);
+
     const newTodos = todos;
     todos.push(newTodo);
 
@@ -37,8 +40,11 @@ const App = props => {
     settodos(newtodos);
   };
   const deleteItem = index => {
+    console.log(index);
+
     const newtodos = [...todos];
     newtodos.splice(index, 1);
+
     settodos(newtodos);
   };
 
