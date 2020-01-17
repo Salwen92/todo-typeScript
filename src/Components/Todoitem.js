@@ -18,10 +18,7 @@ const todoitem = props => {
           {props.todo.value}
         </span>
 
-        <button
-          id={props.todo.id}
-          onClick={() => props.deleteItem(props.index)}
-        >
+        <button id={props.todo.id} onClick={() => props.deleteItem(props.id)}>
           X
         </button>
       </div>
