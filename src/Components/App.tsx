@@ -7,6 +7,7 @@ const initialTodos: Array<Todo> = [];
 
 const App: React.FC = () => {
   const [todos, setTodos] = useState(initialTodos);
+  const [view, setView] = useState("all");
 
   const handleChecked: handleChecked = selectedTodo => {
     const newTodos = todos.map(todo => {
@@ -20,15 +21,52 @@ const App: React.FC = () => {
     });
     setTodos(newTodos);
   };
+
   const addItem: addItem = newValue => {
     newValue.trim() !== "" &&
       setTodos([...todos, { value: newValue, done: false, id: Date.now() }]);
   };
+  const deleteItem: deleteItem = idToDelete => {
+    const newtodos = [...todos];
+    const index = newtodos.findIndex(e => e.id === idToDelete);
 
+    newtodos.splice(index, 1);
+    setTodos(newtodos);
+  };
+
+  const showCompleted = () => {
+    setView("completed");
+  };
+  const showActive = () => {
+    setView("active");
+  };
+  const showAll = () => {
+    setView("all");
+  };
+  const deleteAll = () => {
+    setTodos([]);
+  };
+
+  //-------------------------------------------------------
+  let todoList = todos;
+  if (view === "active") {
+    todoList = todos.filter(t => !t.done);
+  } else if (view === "completed") {
+    todoList = todos.filter(t => t.done);
+  }
   return (
     <React.Fragment>
       <InputValue addItem={addItem} />
-      <ListItems todos={todos} handleChecked={handleChecked} />
+      <ListItems
+        handleChecked={handleChecked}
+        deleteItem={deleteItem}
+        todos={todoList}
+      />
+      <button>{todos.length} items left </button>
+      <button onClick={() => showCompleted()}>Completed</button>
+      <button onClick={() => showActive()}>Active</button>
+      <button onClick={() => showAll()}>Show All</button>
+      <button onClick={() => deleteAll()}>Delete All</button>
     </React.Fragment>
   );
 };

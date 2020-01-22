@@ -5,3 +5,4 @@ type Todo = {
 };
 type handleChecked = (selectedTodo: Todo) => void;
 type addItem = (newTodo: string) => void;
+type deleteItem = (idToDelete: number) => void;

@@ -4,9 +4,14 @@ import "../todoItem.css";
 interface TodoItemProps {
   todo: Todo;
   handleChecked: handleChecked;
+  deleteItem: deleteItem;
 }
 
-export const TodoItem: React.FC<TodoItemProps> = ({ todo, handleChecked }) => {
+export const TodoItem: React.FC<TodoItemProps> = ({
+  todo,
+  handleChecked,
+  deleteItem
+}) => {
   return (
     <div>
       <label className={todo.done ? "done" : undefined}>
@@ -16,6 +21,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo, handleChecked }) => {
           onChange={() => handleChecked(todo)}
         />
         {todo.value}
+        <button onClick={() => deleteItem(todo.id)}>X</button>
       </label>
     </div>
   );
