@@ -1,4 +1,9 @@
-import React, { HtmlHTMLAttributes, useState } from "react";
+import React, {
+  HtmlHTMLAttributes,
+  useState,
+  ChangeEvent,
+  FormEvent
+} from "react";
 import "../App.css";
 import { ListItems } from "./ListItems";
 import { InputValue } from "./Inputvalue";
@@ -8,6 +13,17 @@ const initialTodos: Array<Todo> = [];
 const App: React.FC = () => {
   const [todos, setTodos] = useState(initialTodos);
   const [view, setView] = useState("all");
+  const [Value, setValue] = useState("");
+
+  const handelChange = (evt: ChangeEvent<HTMLInputElement>) => {
+    setValue(evt.target.value);
+  };
+
+  const handelSubmit = (evt: FormEvent<HTMLFormElement>) => {
+    evt.preventDefault();
+    addItem(Value);
+    setValue("");
+  };
 
   const handleChecked: handleChecked = selectedTodo => {
     const newTodos = todos.map(todo => {
@@ -56,7 +72,11 @@ const App: React.FC = () => {
   }
   return (
     <React.Fragment>
-      <InputValue addItem={addItem} />
+      <InputValue
+        todo={Value}
+        handelChange={handelChange}
+        handelSubmit={handelSubmit}
+      />
       <ListItems
         handleChecked={handleChecked}
         deleteItem={deleteItem}
