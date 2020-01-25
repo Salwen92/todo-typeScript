@@ -7,6 +7,72 @@ import React, {
 import "../App.css";
 import { ListItems } from "./ListItems";
 import { InputValue } from "./Inputvalue";
+import styled from "@emotion/styled";
+
+//Styling
+
+const Button = styled("button")`
+  font-size: 14px;
+  margin: 0 0.5em;
+  border-radius: 2em;
+  padding: 0.75em 1.5em;
+  cursor: pointer;
+  background: none;
+  border: 1px solid #4fc08d;
+  letter-spacing: 1px;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #4fc08d;
+  transition: 250ms ease-out;
+  &:hover,
+  &:focus {
+    color: #fff;
+    background: #4fc08d;
+    outline: none;
+  }
+`;
+const DeleteButton = styled("button")`
+  font-size: 14px;
+  margin: 0 0.5em;
+  border-radius: 2em;
+  padding: 0.75em 1.5em;
+  cursor: pointer;
+  background: none;
+  border: 1px solid #d16ba5;
+  letter-spacing: 1px;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #d16ba5;
+  transition: 250ms ease-out;
+  &:hover {
+    color: black;
+    background: #d16ba5;
+    outline: none;
+  }
+`;
+
+const Container = styled("div")`
+  display: flex;
+  overflow: hidden;
+  justify-content: top;
+  height: 100vh;
+  align-items: center;
+  font-family: "Source Sans Pro", sans-serif;
+  flex-direction: column;
+  box-shadow: 0 0 5px rgba(25, 25, 25, 0.25);
+`;
+const Wrapper = styled("div")`
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 20px;
+`;
+const ButttonWrapper = styled("div")`
+  display: flex;
+  flex-direction: row;
+  background: white;
+  border-radius: 20px;
+`;
+
+//Styling
 
 const initialTodos: Array<Todo> = [];
 
@@ -72,21 +138,29 @@ const App: React.FC = () => {
   }
   return (
     <React.Fragment>
-      <InputValue
-        todo={Value}
-        handelChange={handelChange}
-        handelSubmit={handelSubmit}
-      />
-      <ListItems
-        handleChecked={handleChecked}
-        deleteItem={deleteItem}
-        todos={todoList}
-      />
-      <button>{todos.length} items left </button>
-      <button onClick={() => showCompleted()}>Completed</button>
-      <button onClick={() => showActive()}>Active</button>
-      <button onClick={() => showAll()}>Show All</button>
-      <button onClick={() => deleteAll()}>Delete All</button>
+      <Container>
+        <Wrapper>
+          <InputValue
+            todo={Value}
+            handelChange={handelChange}
+            handelSubmit={handelSubmit}
+          />
+
+          <ListItems
+            handleChecked={handleChecked}
+            deleteItem={deleteItem}
+            todos={todoList}
+          />
+          <br></br>
+          <ButttonWrapper>
+            <Button>{todos.length} items left</Button>
+            <Button onClick={() => showCompleted()}>Completed</Button>
+            <Button onClick={() => showActive()}>Active</Button>
+            <Button onClick={() => showAll()}>Show All</Button>
+            <DeleteButton onClick={() => deleteAll()}>Delete All</DeleteButton>
+          </ButttonWrapper>
+        </Wrapper>
+      </Container>
     </React.Fragment>
   );
 };

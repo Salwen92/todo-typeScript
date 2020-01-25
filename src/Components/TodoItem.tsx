@@ -20,7 +20,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
           checked={todo.done}
           onChange={() => handleChecked(todo)}
         />
-        {todo.value}
+        <textarea>{todo.value}</textarea>
         <button onClick={() => deleteItem(todo.id)}>X</button>
       </label>
     </div>
