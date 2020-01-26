@@ -26,7 +26,15 @@ export const TodoItem: React.FC<TodoItemProps> = ({
 }) => {
   return (
     <div>
-      <Layer style={{ overflow: "hidden", maxWidth: "100%", width: "100%" }}>
+      <Layer
+        style={{
+          overflow: "auto",
+          maxWidth: "100%",
+          width: "100%",
+          textAlign: "left",
+          borderRadius: "0"
+        }}
+      >
         <List>
           <label className={todo.done ? "done" : undefined}>
             <ListItem

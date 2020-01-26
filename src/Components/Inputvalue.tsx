@@ -6,7 +6,7 @@ const TodoInput = styled("input")`
   width: 80%;
   font-size: 14px;
   margin: 0 0.5rem;
-  border-radius: 2rem;
+
   padding: 0.75em 1.5rem;
   background: none;
   border: white 1px solid;
@@ -16,6 +16,7 @@ const TodoInput = styled("input")`
     outline: none;
   }
 `;
+
 interface AddTodoProps {
   todo: string;
   handelSubmit: handelSubmit;
@@ -29,7 +30,15 @@ export const InputValue: React.FC<AddTodoProps> = ({
 }) => {
   return (
     <form onSubmit={evt => handelSubmit(evt)}>
-      <Layer elevation="sm">
+      <Layer
+        style={{
+          overflow: "auto",
+          maxWidth: "100%",
+          width: "100%",
+          textAlign: "left",
+          borderRadius: "0"
+        }}
+      >
         <TodoInput
           type="text"
           placeholder="What needs to be Done?"
