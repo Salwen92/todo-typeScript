@@ -1,88 +1,91 @@
-import React, {
-  HtmlHTMLAttributes,
-  useState,
-  ChangeEvent,
-  FormEvent
-} from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import "../App.css";
 import { ListItems } from "./ListItems";
 import { InputValue } from "./Inputvalue";
-import styled from "@emotion/styled";
+import {
+  ButtonCount,
+  DeleteButton,
+  Button,
+  ButttonWrapper,
+  Container,
+  Wrapper
+} from "./AppStyle";
+import { Text } from "sancho";
 
 //Styling
-const ButtonCount = styled("button")`
-  font-size: 14px;
-  margin: 0 0.5em;
-  border-radius: 2em;
-  padding: 0.75em 1.5em;
-  background: none;
-  border: 1px solid white;
-  letter-spacing: 1px;
-  font-family: "Source Sans Pro", sans-serif;
-  color: #4fc08d;
-  transition: 250ms ease-out;
-`;
-const Button = styled("button")`
-  font-size: 14px;
-  margin: 0 0.5em;
-  border-radius: 2em;
-  padding: 0.75em 1.5em;
-  cursor: pointer;
-  background: none;
-  border: 1px solid #4fc08d;
-  letter-spacing: 1px;
-  font-family: "Source Sans Pro", sans-serif;
-  color: #4fc08d;
-  transition: 250ms ease-out;
-  &:hover,
-  &:focus {
-    color: #fff;
-    background: #4fc08d;
-    outline: none;
-  }
-`;
-const DeleteButton = styled("button")`
-  font-size: 14px;
-  margin: 0 0.5em;
-  border-radius: 2em;
-  padding: 0.75em 1.5em;
-  cursor: pointer;
-  background: none;
-  border: 1px solid #d16ba5;
-  letter-spacing: 1px;
-  font-family: "Source Sans Pro", sans-serif;
-  color: #d16ba5;
-  transition: 250ms ease-out;
-  &:hover {
-    color: black;
-    background: #d16ba5;
-    outline: none;
-  }
-`;
+// const ButtonCount = styled("button")`
+//   font-size: 14px;
+//   margin: 0 0.5em;
+//   border-radius: 2em;
+//   padding: 0.75em 1.5em;
+//   background: none;
+//   border: 1px solid white;
+//   letter-spacing: 1px;
+//   font-family: "Source Sans Pro", sans-serif;
+//   color: #4fc08d;
+//   transition: 250ms ease-out;
+// `;
+// const Button = styled("button")`
+//   font-size: 14px;
+//   margin: 0 0.5em;
+//   border-radius: 2em;
+//   padding: 0.75em 1.5em;
+//   cursor: pointer;
+//   background: none;
+//   border: 1px solid #4fc08d;
+//   letter-spacing: 1px;
+//   font-family: "Source Sans Pro", sans-serif;
+//   color: #4fc08d;
+//   transition: 250ms ease-out;
+//   &:hover,
+//   &:focus {
+//     color: #fff;
+//     background: #4fc08d;
+//     outline: none;
+//   }
+// `;
+// const DeleteButton = styled("button")`
+//   font-size: 14px;
+//   margin: 0 0.5em;
+//   border-radius: 2em;
+//   padding: 0.75em 1.5em;
+//   cursor: pointer;
+//   background: none;
+//   border: 1px solid #d16ba5;
+//   letter-spacing: 1px;
+//   font-family: "Source Sans Pro", sans-serif;
+//   color: #d16ba5;
+//   transition: 250ms ease-out;
+//   &:hover {
+//     color: black;
+//     background: #d16ba5;
+//     outline: none;
+//   }
+// `;
 
-const Container = styled("div")`
-  display: flex;
-  overflow: scroll;
-  justify-content: top;
-  height: 99vh;
-  align-items: center;
-  font-family: "Source Sans Pro", sans-serif;
-  flex-direction: column;
-  box-shadow: 0 0 5px rgba(25, 25, 25, 0.25);
-`;
-const Wrapper = styled("div")`
-  display: flex;
-  width: 45%;
-  flex-direction: column;
-  background: white;
-  border-radius: 20px;
-`;
-const ButttonWrapper = styled("div")`
-  display: block;
-  flex-direction: row;
-  background: white;
-  border-radius: 20px;
-`;
+// const Container = styled("div")`
+//   display: flex;
+//   overflow: scroll;
+//   justify-content: top;
+//   height: 99vh;
+//   align-items: center;
+//   font-family: "Source Sans Pro", sans-serif;
+//   flex-direction: column;
+//   box-shadow: 0 0 5px rgba(25, 25, 25, 0.25);
+// `;
+// const Wrapper = styled("div")`
+//   display: flex;
+//   width: 45%;
+//   flex-direction: column;
+//   background: white;
+//   border-radius: 20px;
+// `;
+// const ButttonWrapper = styled("div")`
+//   display: block;
+//   flex-direction: row;
+//   background: white;
+//   border-radius: 20px;
+// `;
 
 //Styling
 
@@ -152,6 +155,7 @@ const App: React.FC = () => {
     <React.Fragment>
       <Container>
         <Wrapper>
+          <Text variant="display1">Todos</Text>
           <InputValue
             todo={Value}
             handelChange={handelChange}
@@ -165,7 +169,7 @@ const App: React.FC = () => {
           />
           <br></br>
           <ButttonWrapper>
-            <ButtonCount>{todos.length} items left</ButtonCount>
+            <ButtonCount>{todoList.length} items left</ButtonCount>
             <Button onClick={() => showCompleted()}>Completed</Button>
             <Button onClick={() => showActive()}>Active</Button>
             <Button onClick={() => showAll()}>Show All</Button>

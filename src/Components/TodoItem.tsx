@@ -1,6 +1,6 @@
 import React from "react";
 import "../todoItem.css";
-import styled from "@emotion/styled";
+import { CheckBoxTodo } from "./TodoItemStyle";
 
 import { IconButton, IconTrash2, Layer, List, ListItem } from "sancho";
 
@@ -10,14 +10,14 @@ interface TodoItemProps {
   deleteItem: deleteItem;
 }
 
-const CheckBoxTodo = styled("input")`
-  height: 25px;
-  width: 25px;
-  
-  cursor: pointer;
+// const CheckBoxTodo = styled("input")`
+//   height: 25px;
+//   width: 25px;
 
-  }
-`;
+//   cursor: pointer;
+
+//   }
+// `;
 
 export const TodoItem: React.FC<TodoItemProps> = ({
   todo,
@@ -28,7 +28,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({
     <div>
       <Layer
         style={{
-          overflow: "auto",
+          overflow: "visible",
           maxWidth: "100%",
           width: "100%",
           textAlign: "left",
