@@ -10,7 +10,18 @@ import { InputValue } from "./Inputvalue";
 import styled from "@emotion/styled";
 
 //Styling
-
+const ButtonCount = styled("button")`
+  font-size: 14px;
+  margin: 0 0.5em;
+  border-radius: 2em;
+  padding: 0.75em 1.5em;
+  background: none;
+  border: 1px solid white;
+  letter-spacing: 1px;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #4fc08d;
+  transition: 250ms ease-out;
+`;
 const Button = styled("button")`
   font-size: 14px;
   margin: 0 0.5em;
@@ -51,9 +62,9 @@ const DeleteButton = styled("button")`
 
 const Container = styled("div")`
   display: flex;
-  overflow: hidden;
+  overflow: scroll;
   justify-content: top;
-  height: 100vh;
+  height: 99vh;
   align-items: center;
   font-family: "Source Sans Pro", sans-serif;
   flex-direction: column;
@@ -61,12 +72,13 @@ const Container = styled("div")`
 `;
 const Wrapper = styled("div")`
   display: flex;
+  width: 45%;
   flex-direction: column;
   background: white;
   border-radius: 20px;
 `;
 const ButttonWrapper = styled("div")`
-  display: flex;
+  display: block;
   flex-direction: row;
   background: white;
   border-radius: 20px;
@@ -153,7 +165,7 @@ const App: React.FC = () => {
           />
           <br></br>
           <ButttonWrapper>
-            <Button>{todos.length} items left</Button>
+            <ButtonCount>{todos.length} items left</ButtonCount>
             <Button onClick={() => showCompleted()}>Completed</Button>
             <Button onClick={() => showActive()}>Active</Button>
             <Button onClick={() => showAll()}>Show All</Button>
