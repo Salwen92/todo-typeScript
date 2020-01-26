@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { Layer } from "sancho";
 
 const TodoInput = styled("input")`
   width: 80%;
@@ -8,10 +9,10 @@ const TodoInput = styled("input")`
   border-radius: 2rem;
   padding: 0.75em 1.5rem;
   background: none;
-  border: #e3e3e3 1px solid;
+  border: white 1px solid;
   transition: border 250ms ease-out;
   &:focus {
-    border: #4fc08d 1px solid;
+    border: white 1px solid;
     outline: none;
   }
 `;
@@ -28,12 +29,14 @@ export const InputValue: React.FC<AddTodoProps> = ({
 }) => {
   return (
     <form onSubmit={evt => handelSubmit(evt)}>
-      <TodoInput
-        type="text"
-        placeholder="What needs to be Done?"
-        onChange={evt => handelChange(evt)}
-        value={todo}
-      />
+      <Layer elevation="sm">
+        <TodoInput
+          type="text"
+          placeholder="What needs to be Done?"
+          onChange={evt => handelChange(evt)}
+          value={todo}
+        />
+      </Layer>
     </form>
   );
 };
