@@ -4,6 +4,8 @@ import { CheckBoxTodo } from "./TodoItemStyle";
 
 import { IconButton, IconTrash2, Layer, List, ListItem } from "sancho";
 
+import { motion, AnimatePresence } from "framer-motion";
+
 interface TodoItemProps {
   todo: Todo;
   handleChecked: handleChecked;
@@ -18,47 +20,54 @@ interface TodoItemProps {
 
 //   }
 // `;
-
 export const TodoItem: React.FC<TodoItemProps> = ({
   todo,
   handleChecked,
   deleteItem
 }) => {
   return (
-    <div>
-      <Layer
-        style={{
-          overflow: "visible",
-          maxWidth: "100%",
-          width: "100%",
-          textAlign: "left",
-          borderRadius: "0"
-        }}
+    // <div animate={{ scale: [0.8, 1] }} transition={{ duration: 0.15 }}>
+    <AnimatePresence>
+      <motion.div
+        key={todo.id}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 10, transition: { duration: 10 } }}
       >
-        <List>
-          <label className={todo.done ? "done" : undefined}>
-            <ListItem
-              wrap={true}
-              contentBefore={
-                <CheckBoxTodo
-                  type="checkbox"
-                  checked={todo.done}
-                  onChange={() => handleChecked(todo)}
-                />
-              }
-              primary={todo.value}
-              contentAfter={
-                <IconButton
-                  icon={<IconTrash2 />}
-                  label="Menu"
-                  variant="ghost"
-                  onClick={() => deleteItem(todo.id)}
-                />
-              }
-            />
-          </label>
-        </List>
-      </Layer>
-    </div>
+        <Layer
+          style={{
+            overflow: "visible",
+            maxWidth: "100%",
+            width: "100%",
+            textAlign: "left",
+            borderRadius: "0"
+          }}
+        >
+          <List>
+            <label className={todo.done ? "done" : undefined}>
+              <ListItem
+                wrap={true}
+                contentBefore={
+                  <CheckBoxTodo
+                    type="checkbox"
+                    checked={todo.done}
+                    onChange={() => handleChecked(todo)}
+                  />
+                }
+                primary={todo.value}
+                contentAfter={
+                  <IconButton
+                    icon={<IconTrash2 />}
+                    label="Menu"
+                    variant="ghost"
+                    onClick={() => deleteItem(todo.id)}
+                  />
+                }
+              />
+            </label>
+          </List>
+        </Layer>
+      </motion.div>
+    </AnimatePresence>
   );
 };
