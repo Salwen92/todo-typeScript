@@ -31,6 +31,7 @@ export const Button = styled("button")`
     outline: none;
   }
 `;
+
 export const DeleteButton = styled("button")`
   font-size: 14px;
   margin: 0 0.5em;
@@ -46,6 +47,7 @@ export const DeleteButton = styled("button")`
   &:hover {
     color: black;
     background: #d16ba5;
+    scale: 1.1;
     outline: none;
   }
 `;
@@ -72,4 +74,23 @@ export const ButttonWrapper = styled("div")`
   flex-direction: row;
   background: white;
   border-radius: 20px;
+`;
+
+export const DeletButton = styled("button")`
+  font-size: 14px;
+  margin: 0 0.5em;
+  border-radius: 2em;
+  padding: 0.75em 1.5em;
+  cursor: pointer;
+  background: none;
+  border: 1px solid #d16ba5;
+  letter-spacing: 1px;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #d16ba5;
+  transition: 250ms ease-out;
+  &:hover {
+    color: black;
+    background: #d16ba5;
+    outline: none;
+  }
 `;
